@@ -50,6 +50,9 @@ TagManager:
   - name: Player
     uniqueID: 3736743031
     locked: 0
+  - name: Door
+    uniqueID: 2549143311
+    locked: 0
   - name: Pickup
     uniqueID: 1308444209
     locked: 0

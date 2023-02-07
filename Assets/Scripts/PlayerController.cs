@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     private Rigidbody2D rb2d;
-
     public TMP_Text countText;
     public TMP_Text GameOverText;
     private int countValue = 0;
@@ -71,35 +70,38 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Pickup"))
-
+        {
             other.gameObject.SetActive(false);
 
-        countValue = countValue + 1;
+            countValue = countValue + 1;
 
-        SetCountText();
+            SetCountText();
+        }
+
+          
+
+        if (other.gameObject.CompareTag("Door"))
+        {
+            if (countValue == 1)
+            {
+                SceneManager.LoadScene("Second Scene");
+            }
+        }
     }
 
     void Update()
     {
         Vector2 move = new Vector2(horizontal, vertical);
 
-
         horizontal = Input.GetAxis("Horizontal");
-
         vertical = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (isInvincible)
         {
-            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("Door"));
-            if (hit.collider != null)
-            {
-                if (countValue == 1)
-                {
-                    SceneManager.LoadScene("Second Scene");
-                }
-            }
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
         }
-
 
     }
 
