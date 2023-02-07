@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public TMP_Text countText;
     public TMP_Text GameOverText;
-    private int count;
-
+    private int countValue = 0;
+    private int countAmount;
     int currentHealth;
     public static int level;
     public float timeInvincible = 2.0f;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip damageSound;
     AudioSource audioSource;
-
+    Rigidbody2D rigidbody2d;
 
     bool gameOver;
 
@@ -45,10 +45,11 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
 
-        count = 0;
-
         SetCountText();
+
+        level =  1;
     }
+
     void FixedUpdate()
     {
 
@@ -73,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
             other.gameObject.SetActive(false);
 
-        count = count + 1;
+        countValue = countValue + 1;
 
         SetCountText();
     }
@@ -86,6 +87,20 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
 
         vertical = Input.GetAxis("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("Door"));
+            if (hit.collider != null)
+            {
+                if (countValue == 1)
+                {
+                    SceneManager.LoadScene("Second Scene");
+                }
+            }
+        }
+
+
     }
 
     public void ChangeHealth(int amount)
@@ -106,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText()
     {
-        countText.text = "Count: " + count.ToString();
+        countText.text = "Count value: " + countValue.ToString();
     }
 
 }
