@@ -8,6 +8,8 @@ public class EmenyController : MonoBehaviour
     private PlayerController PlayerController;
     public float speed;
     Animator animator;
+    private float distance;
+    public GameObject Player;
 
     void Start()
     {
@@ -30,7 +32,19 @@ public class EmenyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        distance = Vector2.Distance(transform.position, Player.transform.position);
+
+        Vector2 direction = Player.transform.position - transform.position;
+
+        direction.Normalize();
+
+        float angle = Mathf.Atan(direction.x) * Mathf.Rad2Deg;
+
+        if (distance < 7)
+        {
+            transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        }
     }
 
 

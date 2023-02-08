@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 1620069641}
   m_Layer: 0
   m_Name: Player
-  m_TagString: PlayerController
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1283,7 +1283,7 @@ GameObject:
   - component: {fileID: 1886610768}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1320,7 +1320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f90df5cb2e79d41b8016517df72e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 3
+  Player: {fileID: 1620069634}
 --- !u!70 &1886610770
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1352,7 +1353,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
