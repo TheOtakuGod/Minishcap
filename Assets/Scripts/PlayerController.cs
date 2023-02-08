@@ -66,14 +66,12 @@ public class PlayerController : MonoBehaviour
 
 
         float moveVertical = Input.GetAxis("Vertical");
+
+       Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+
+        rb2d.AddForce(movement * speed);
+
         rigidbody2d.MovePosition(position);
-
-
-
-
-
-
-
 
     }
 
