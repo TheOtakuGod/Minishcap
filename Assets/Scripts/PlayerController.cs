@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text GameOverText;
     private int countValue = 0;
     private int countAmount;
+    private int scoreAmount;
+    private int scoreValue = 0;
     int currentHealth;
     public static int level;
     public float timeInvincible = 2.0f;
@@ -21,7 +24,6 @@ public class PlayerController : MonoBehaviour
     Vector2 lookDirection = new Vector2(1, 0);
     float horizontal;
     float vertical;
-
     public int health { get { return currentHealth; } }
     bool isInvincible;
     public int maxHealth = 5;
@@ -30,10 +32,15 @@ public class PlayerController : MonoBehaviour
     public AudioClip loseSound;
     public AudioClip hitSound;
     public AudioClip damageSound;
+    public AudioClip healthSound;
+    public AudioClip fairySound;
     AudioSource audioSource;
     Rigidbody2D rigidbody2d;
     Animator animator;
     bool gameOver;
+    public GameObject projectilePrefab;
+
+    public GameObject healthPrefab;
 
     public GameObject hitPrefab;
     
@@ -52,7 +59,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         audioSource = GetComponent<AudioSource>();
         currentHealth = 5;
-      
+        GameOverText.text = "";
     }
 
     void FixedUpdate()
@@ -97,6 +104,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+
     void Update()
     {
         Vector2 move = new Vector2(horizontal, vertical);
@@ -122,6 +135,41 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            isInvincible = true;
+            animator.SetTrigger("Block");
+        }
+        
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            isInvincible = false;
+        }
+
+
+        if (Input.GetKey("spacebar"))
+        {
+            animator.SetTrigger("Roll");
+        }
+
+
+
+        if (Input.GetKey(KeyCode.R))
+        {
+
+            if (gameOver == true)
+            {
+
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+
+            }
+        }
+
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
+
 
     }
 
@@ -129,21 +177,53 @@ public class PlayerController : MonoBehaviour
     {
         if (amount < 0)
         {
-            
+            animator.SetTrigger("Hit");
+
+            if (isInvincible)
+                return;
+
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+
         }
 
         if (currentHealth < 1)
         {
             speed = 0;
-            GameOverText.text = "You lose!";
+            GameOverText.text = "You lose! Press R to restart";
             gameOver = true;
+            audioSource.Stop();
+            audioSource.PlayOneShot(loseSound);
+        }
 
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+
+        if (amount >= 0)
+        {
+            GameObject projectileObject = Instantiate(healthPrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
         }
     }
 
     void SetCountText()
     {
         countText.text = "Count value: " + countValue.ToString();
+    }
+
+    public void ChangeScore(int scoreAmount)
+    {
+        scoreValue += 1;
+
+        if (scoreValue >= 1)
+        {
+            gameOver = true;
+            GameOverText.text = "You Win! Game by Romeo, Bailey Rowles, Robert Guzman, and Skyler Donovan";
+            audioSource.Stop();
+            audioSource.PlayOneShot(winSound);
+
+        }
+
     }
 
 }
