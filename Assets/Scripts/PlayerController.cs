@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip damageSound;
     AudioSource audioSource;
     Rigidbody2D rigidbody2d;
-
+    Animator animator;
     bool gameOver;
 
     public GameObject hitPrefab;
@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
         SetCountText();
 
         level =  1;
+
+        animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
+        audioSource = GetComponent<AudioSource>();
+        currentHealth = 5;
+      
     }
 
     void FixedUpdate()
@@ -60,13 +66,17 @@ public class PlayerController : MonoBehaviour
 
 
         float moveVertical = Input.GetAxis("Vertical");
+        rigidbody2d.MovePosition(position);
 
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
 
-        rb2d.AddForce(movement * speed);
+
+
+
+
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Pickup"))
@@ -102,6 +112,18 @@ public class PlayerController : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
         }
+
+
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
+
 
     }
 
