@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetKey("spacebar"))
+        if (Input.GetButtonDown("Jump"))
         {
             animator.SetTrigger("Roll");
         }

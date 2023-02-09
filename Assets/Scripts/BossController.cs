@@ -10,6 +10,8 @@ public class BossController : MonoBehaviour
     Animator animator;
     private float distance;
     public GameObject Player;
+    public int maxHealth = 3;
+    int currentHealth;
 
     void Start()
     {
@@ -29,7 +31,25 @@ public class BossController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        animator.SetTrigger("Hurt");
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        animator.SetBool("Is Dead", true);
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+    }
+
     void Update()
     {
         distance = Vector2.Distance(transform.position, Player.transform.position);

@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmenyController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
     private PlayerController PlayerController;
     public float speed;
-    Animator animator;
+    public Animator animator;
     private float distance;
     public GameObject Player;
+    public int maxHealth = 3;
+    int currentHealth;
 
     void Start()
     {
+
+        currentHealth = maxHealth;
+
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         GameObject PlayerControllerObject = GameObject.FindWithTag("PlayerController");
@@ -27,9 +32,30 @@ public class EmenyController : MonoBehaviour
         {
             print("Cannot find GameController Script!");
         }
+
+        
+
     }
 
-    // Update is called once per frame
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        animator.SetTrigger("Hurt");
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        animator.SetBool("Is Dead", true);
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+    }
+    
     void Update()
     {
         distance = Vector2.Distance(transform.position, Player.transform.position);
