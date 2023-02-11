@@ -28,10 +28,17 @@ public class Doors : Interactable
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (playerInRange)
+            if (playerInRange && thisDoorType = DoorType.key)
             {
                 //Does the player have a key?
-                //If so, then call the open method
+
+                if(playerInventory. numberOfKeys > 0)
+                {
+                    playerInventory.numberOfKeys--;
+                    //If so, then call the open method
+                    Open();
+                }
+
             }
         }
     }
@@ -39,8 +46,11 @@ public class Doors : Interactable
     public void Open()
     {
         //Turn off the door's sprite renderer
+        doorSprite.enabled = false;
         //set open to true
+        open = true;
         //turn off the door's box collider
+        physicsCollider.enabled = false;
         
     }
 
