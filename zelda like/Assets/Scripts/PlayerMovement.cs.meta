@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: fd2964a6462f4fd4796ccd520a0d164b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - startingPosition: {instanceID: 0}
+  - playerInventory: {fileID: 11400000, guid: 7979d95c2f85f674da5c176e1493fe14, type: 2}
+  - receivedItemSprite: {instanceID: 0}
+  - playerHit: {instanceID: 0}
+  - triggerCollider: {instanceID: 0}
+  - mySprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
