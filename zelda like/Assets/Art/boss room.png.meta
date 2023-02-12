@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -5496,7 +5496,7 @@ TextureImporter:
     nameFileIdTable:
       boss room_4: 1123436553
       boss room_16: -1917434385
-      boss room_202: 990045258
+      boss room_123: -663084885
       boss room_207: -1036842737
       boss room_50: 2020354257
       boss room_65: 683951891
@@ -5520,8 +5520,8 @@ TextureImporter:
       boss room_186: -704758515
       boss room_216: 1627001167
       boss room_137: 1235760197
-      boss room_187: -2076527134
       boss room_101: -997530589
+      boss room_187: -2076527134
       boss room_103: -1133974238
       boss room_209: 693494167
       boss room_203: -632877071
@@ -5745,8 +5745,8 @@ TextureImporter:
       boss room_219: 691531600
       boss room_239: 503745067
       boss room_40: 202786412
-      boss room_123: -663084885
       boss room_115: -558879552
+      boss room_202: 990045258
       boss room_190: 1408290871
       boss room_217: -107229720
   spritePackingTag: 

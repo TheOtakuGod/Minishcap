@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2858,8 +2858,8 @@ TextureImporter:
       walls_35: -1936025149
       walls_100: 286754443
       walls_118: 220520312
-      walls_20: -842697565
       walls_127: -53006701
+      walls_20: -842697565
       walls_30: 163182952
       walls_48: 415360143
       walls_9: 189532427

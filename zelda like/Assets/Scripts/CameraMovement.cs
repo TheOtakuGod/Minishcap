@@ -7,13 +7,15 @@ public class CameraMovement : MonoBehaviour
 public float smoothing;
 public Vector2 maxPosition;
 public Vector2 minPosition;
-    // Start is called before the first frame update
+public VectorValue camMin;
+public VectorValue camMax;
     void Start()
     {
-        
+        maxPosition = camMax.initialValue;
+        minPosition = camMin.initialValue;
+        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         if(transform.position != target.position)
@@ -23,5 +25,20 @@ public Vector2 minPosition;
             targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
             transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing);
         }
+    }
+
+    private Vector3 RoundPosition(Vector3 position)
+    {
+        float xOffset = position.x % .0625f;
+        if(xOffset != 0)
+        {
+            position.x -= xOffset;
+        }
+        float yOffset = position.y % .0625f;
+        if(yOffset != 0)
+        {
+            position.y -= yOffset;
+        }
+        return position;
     }
 }

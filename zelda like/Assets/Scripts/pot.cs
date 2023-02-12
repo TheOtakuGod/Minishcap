@@ -12,11 +12,6 @@ public class pot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Smash()
     {
         anim.SetBool("smash", true);
