@@ -170,20 +170,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  maxHealth: {fileID: 0}
+  maxHealth: {fileID: 11400000, guid: 4eee9e54a2afb0a43a523b0022d1b03a, type: 2}
   health: 2
   enemyName: Ted the Ghoul
   baseAttack: 1
   moveSpeed: 1.5
   homePosition: {x: 0, y: 0}
   deathEffect: {fileID: 6441114698111308569, guid: 92f4e85c1c3906d45bba17e9460f7358, type: 3}
-  thisLoot: {fileID: 0}
+  thisLoot: {fileID: 11400000, guid: 02bdbf1709c5c924888625c03eda7e2d, type: 2}
   roomSignal: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 2904702183996089666}
   target: {fileID: 0}
   chaseRadius: 4
   attackRadius: 1
-  anim: {fileID: 0}
+  anim: {fileID: 2904702183996089665}
 --- !u!61 &2904702183996089670
 BoxCollider2D:
   m_ObjectHideFlags: 0

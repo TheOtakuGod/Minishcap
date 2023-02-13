@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
-{public Transform target;
-public float smoothing;
-public Vector2 maxPosition;
-public Vector2 minPosition;
-public VectorValue camMin;
-public VectorValue camMax;
-    void Start()
-    {
+{
+[Header("Position Variables")]
+    public Transform target;
+    public float smoothing;
+    public Vector2 maxPosition;
+    public Vector2 minPosition;
+
+    [Header ("Animator")]
+    public Animator anim;
+
+    [Header("Position Reset")]
+    public VectorValue camMin;
+    public VectorValue camMax;
+
+	// Use this for initialization
+	void Start () {
         maxPosition = camMax.initialValue;
         minPosition = camMin.initialValue;
+        anim = GetComponent<Animator>();
         transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
-    }
-
-    void LateUpdate()
-    {
+	}
+	
+	// Update is called once per frame
+	void LateUpdate () {
         if(transform.position != target.position)
         {
             Vector3 targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
@@ -40,5 +49,18 @@ public VectorValue camMax;
             position.y -= yOffset;
         }
         return position;
+    }
+
+    public void BeginKick()
+    {
+        Debug.Log("Kick");
+        anim.SetBool("kick_active", true);
+        StartCoroutine(KickCo());
+    }
+
+    public IEnumerator KickCo()
+    {
+        yield return null;
+        anim.SetBool("kick_active", false);
     }
 }

@@ -3,7 +3,12 @@ guid: 1160c700be7afd243a15952f691a99d2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fullHeart: {instanceID: 0}
+  - halfFullHeart: {instanceID: 0}
+  - emptyHeart: {instanceID: 0}
+  - heartContainers: {fileID: 11400000, guid: 14c3a6f2cf3ac8642a2e3e5402faf4f9, type: 2}
+  - playerCurrentHealth: {fileID: 11400000, guid: 101b1df0b1ab5984d91f4462a43ed94c, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

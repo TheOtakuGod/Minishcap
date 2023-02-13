@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 2
   knockTime: 0.2
-  otherTag: 0
+  damage: 0
 --- !u!114 &8658928826518078749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,21 +211,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  maxHealth: {fileID: 0}
-  health: 0
+  maxHealth: {fileID: 11400000, guid: 4eee9e54a2afb0a43a523b0022d1b03a, type: 2}
+  health: 2
   enemyName: Patrol
   baseAttack: 1
   moveSpeed: 2
   homePosition: {x: 0, y: 0}
   deathEffect: {fileID: 6441114698111308569, guid: 92f4e85c1c3906d45bba17e9460f7358, type: 3}
-  thisLoot: {fileID: 0}
+  thisLoot: {fileID: 11400000, guid: 02bdbf1709c5c924888625c03eda7e2d, type: 2}
   roomSignal: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 3614524324752051619}
   target: {fileID: 0}
   chaseRadius: 3
   attackRadius: 1
-  anim: {fileID: 0}
-  path: []
+  anim: {fileID: 3614524324752051616}
+  path:
+  - {fileID: 0}
+  - {fileID: 0}
   currentPoint: 0
   currentGoal: {fileID: 0}
   roundingDistance: 0

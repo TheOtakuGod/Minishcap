@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-public SignalSender context;
+    public SignalSender context;
     public bool playerInRange;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,4 +23,5 @@ public SignalSender context;
             context.Raise();
             playerInRange = false;
         }
-    }}
+    }
+}

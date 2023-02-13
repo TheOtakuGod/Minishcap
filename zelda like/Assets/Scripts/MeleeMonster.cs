@@ -6,7 +6,7 @@ public class MeleeMonster : Ghoul
 {
     public override void CheckDistance()
     {
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance (target.position, transform.position) > attackRadius)
+        if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius)
         {
             if (currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger)
             {
@@ -16,14 +16,13 @@ public class MeleeMonster : Ghoul
                 ChangeState(EnemyState.walk);
             }
         }
-        else if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance (target.position, transform.position) <= attackRadius)
+        else if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) <= attackRadius)
         {
             if (currentState == EnemyState.walk && currentState != EnemyState.stagger)
             {
                 StartCoroutine(AttackCo());
             }
         }
-
     }
 
     public IEnumerator AttackCo()

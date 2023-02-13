@@ -3,7 +3,11 @@ guid: 3a4b846e6b096aa4486b95d7361cda0b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - maxHealth: {fileID: 11400000, guid: 4eee9e54a2afb0a43a523b0022d1b03a, type: 2}
+  - deathEffect: {fileID: 6441114698111308569, guid: 92f4e85c1c3906d45bba17e9460f7358, type: 3}
+  - thisLoot: {instanceID: 0}
+  - roomSignal: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -12,7 +12,6 @@ public enum EnemyState
 
 public class Enemy : MonoBehaviour
 {
-    [Header("State Machine")]
     public EnemyState currentState;
 
     [Header("Enemy Stats")]
@@ -35,6 +34,7 @@ public class Enemy : MonoBehaviour
     {
         health = maxHealth.initialValue;
     }
+
     private void OnEnable()
     {
         transform.position = homePosition;
@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
+
     private void MakeLoot()
     {
         if(thisLoot != null)
@@ -67,6 +68,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
     private void DeathEffect()
     {
         if(deathEffect != null)
@@ -75,19 +77,21 @@ public class Enemy : MonoBehaviour
             Destroy(effect, deathEffectDelay);
         }
     }
-    public void Knock(Rigidbody2D myRigidbody, float knockTime)
+
+    public void Knock(Rigidbody2D rb, float knockTime, float damage)
     {
-        StartCoroutine(KnockCo(myRigidbody, knockTime));
+        StartCoroutine(KnockCo(rb, knockTime));
+        TakeDamage(damage);
     }
 
-    private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
+    private IEnumerator KnockCo(Rigidbody2D rb, float knockTime)
     {
-        if (myRigidbody != null)
+        if (rb != null)
         {
             yield return new WaitForSeconds(knockTime);
-            myRigidbody.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
             currentState = EnemyState.idle;
-            myRigidbody.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
         }
     }
 }

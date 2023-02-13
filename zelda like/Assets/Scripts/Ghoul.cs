@@ -14,20 +14,19 @@ public class Ghoul : Enemy
     [Header("Animator")]
     public Animator anim;
 
-    // Start is called before the first frame update
-    void Start()
+
+	void Start () 
     {
         currentState = EnemyState.idle;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
+	}
+	
+	void FixedUpdate () 
     {
         CheckDistance();
-    }
+	}
 
     public virtual void CheckDistance()
     {
@@ -42,13 +41,13 @@ public class Ghoul : Enemy
                 anim.SetBool("wakeUp", true);
             }
         }
-        else if(Vector3.Distance(target.position, transform.position) > chaseRadius)
+        else if (Vector3.Distance(target.position,transform.position) > chaseRadius)
         {
             anim.SetBool("wakeUp", false);
-        } 
+        }
     }
 
-    private void SetAnimFloat(Vector2 setVector)
+    public void SetAnimFloat(Vector2 setVector)
     {
         anim.SetFloat("moveX", setVector.x);
         anim.SetFloat("moveY", setVector.y);
@@ -58,18 +57,14 @@ public class Ghoul : Enemy
     {
         if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            if (direction.x > 0)
-            {
+            if(direction.x > 0){
                 SetAnimFloat(Vector2.right);
-            }
-            else if (direction.x < 0)
+            }else if (direction.x < 0)
             {
                 SetAnimFloat(Vector2.left);
             }
-        }
-        else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
-        {
-            if (direction.y > 0)
+        }else if(Mathf.Abs(direction.x) < Mathf.Abs(direction.y)){
+            if(direction.y > 0)
             {
                 SetAnimFloat(Vector2.up);
             }
@@ -80,8 +75,7 @@ public class Ghoul : Enemy
         }
     }
 
-    public void ChangeState(EnemyState newState)
-    {
+    public void ChangeState(EnemyState newState){
         if(currentState != newState)
         {
             currentState = newState;

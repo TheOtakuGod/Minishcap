@@ -11,8 +11,8 @@ public class HeartManager : MonoBehaviour
     public FloatValue heartContainers;
     public FloatValue playerCurrentHealth;
 
-	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         InitHearts();
 	}
 
@@ -20,11 +20,8 @@ public class HeartManager : MonoBehaviour
     {
         for (int i = 0; i < heartContainers.RuntimeValue; i ++)
         {
-            if (i < hearts.Length)
-            {
-                hearts[i].gameObject.SetActive(true);
-                hearts[i].sprite = fullHeart;
-            }
+            hearts[i].gameObject.SetActive(true);
+            hearts[i].sprite = fullHeart;
         }
     }
 
@@ -36,17 +33,17 @@ public class HeartManager : MonoBehaviour
         {
             if(i <= tempHealth-1)
             {
-                //Full Heart
                 hearts[i].sprite = fullHeart;
-            }else if( i >= tempHealth)
+            }
+            else if
+            ( i >= tempHealth)
             {
-                //empty heart
                 hearts[i].sprite = emptyHeart;
-            }else{
-                //half full heart
+            }
+            else
+            {
                 hearts[i].sprite = halfFullHeart;
             }
         }
-
     }
 }

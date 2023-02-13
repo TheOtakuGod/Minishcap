@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a32372ae42a6ca642869825895d94ad4, type: 3}
-  m_Name: CameraMin
+  m_Script: {fileID: 11500000, guid: 03482987d6530cd49bf100430acaeb1a, type: 3}
+  m_Name: MostlyHealth
   m_EditorClassIdentifier: 
-  initialValue: {x: 0, y: 0}
-  defaultValue: {x: 0, y: 0}
+  loots: []
