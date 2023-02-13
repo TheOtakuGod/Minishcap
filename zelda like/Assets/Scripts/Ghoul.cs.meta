@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 239f1d28f36583049979d850a417463c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - maxHealth: {fileID: 11400000, guid: 4eee9e54a2afb0a43a523b0022d1b03a, type: 2}
+  - deathEffect: {fileID: 6441114698111308569, guid: 92f4e85c1c3906d45bba17e9460f7358, type: 3}
+  - thisLoot: {fileID: 11400000, guid: 02bdbf1709c5c924888625c03eda7e2d, type: 2}
+  - roomSignal: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - target: {instanceID: 0}
+  - anim: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
